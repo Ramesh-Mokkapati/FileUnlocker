@@ -1,0 +1,73 @@
+// FileUnlocker.rc - Application resources
+#include "resource.h"
+#include <winres.h>
+#include "afxres.h"
+
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+
+IDR_MAINFRAME ICON "FileUnlocker.ico"
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_APP_TITLE "File Unlocker"
+END
+
+// -------------------------------------------------------------------------
+// IDD_FILEUNLOCKER  (CFileUnlockerDialog) - the application's main window
+// -------------------------------------------------------------------------
+IDD_FILEUNLOCKER DIALOGEX 0, 0, 354, 262
+STYLE DS_SETFONT | WS_MINIMIZEBOX | WS_MAXIMIZEBOX |
+      WS_SIZEBOX | WS_CAPTION | WS_SYSMENU | DS_MODALFRAME
+EXSTYLE WS_EX_ACCEPTFILES | WS_EX_APPWINDOW
+CAPTION "File Unlocker"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_FU_EDIT_FILE_PATH,    7,   7, 289, 14, ES_AUTOHSCROLL
+    PUSHBUTTON      "Browse...", IDC_FU_BTN_BROWSE, 302, 7, 46, 14
+    CONTROL         "", IDC_FU_LIST_LOCKERS, "SysListView32",
+                    LVS_REPORT|LVS_SHOWSELALWAYS|WS_BORDER|WS_CHILD|WS_VISIBLE|WS_TABSTOP,
+                    7, 26, 341, 174
+    LTEXT           "", IDC_FU_STATIC_STATUS, 7, 203, 341, 14
+    PUSHBUTTON      "Refresh",       IDC_FU_BTN_REFRESH,        7, 222,  63, 16
+    PUSHBUTTON      "Kill Selected", IDC_FU_BTN_KILL_SELECTED,  75, 222,  74, 16
+    PUSHBUTTON      "Kill All",      IDC_FU_BTN_KILL_ALL,      155, 222,  69, 16
+    PUSHBUTTON      "Run as Administrator", IDC_FU_BTN_ELEVATE, 262, 222, 86, 16
+    AUTOCHECKBOX    "Show ""Unlock with File Unlocker"" in Explorer's right-click menu",
+                    IDC_FU_CHK_EXPLORER, 7, 244, 250, 12
+    PUSHBUTTON      "Close",         IDC_FU_BTN_CLOSE,         296, 242,  51, 16
+END
+
+// -------------------------------------------------------------------------
+// Version info
+// -------------------------------------------------------------------------
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,0
+ PRODUCTVERSION 1,0,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName",      "Videalert"
+            VALUE "FileDescription",  "File Unlocker"
+            VALUE "FileVersion",      "1.0.0.0"
+            VALUE "InternalName",     "FileUnlocker"
+            VALUE "OriginalFilename", "FileUnlocker.exe"
+            VALUE "ProductName",      "FileUnlocker"
+            VALUE "ProductVersion",   "1.0.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
